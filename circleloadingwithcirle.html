@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>circie loading with cirle line</title>
+	<style>
+		div[class]{
+			width:200px;
+			height:200px;
+		}
+		.cirle{
+			position: relative;
+			margin: 100px auto 0;
+			background-color: pink;
+			border-radius: 50%;
+		}
+		.left{
+			position: absolute;
+			clip:rect(0,101px,auto,0);
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			overflow: hidden;
+			border: 1px dashed black;
+		}
+		.left div{
+			position: relative;
+			width:100%;
+			height: 100%;
+			transform: rotate(0.2turn);
+			animation: rotate-delay 15s infinite linear;
+			background: linear-gradient(90deg,red 50%,transparent 0);
+		}
+		@keyframes rotate-delay {
+			from{
+				transform:rotate(0turn);
+			}
+			50%{
+				transform:rotate(0turn);
+			}
+			to{
+				transform:rotate(0.5turn);
+			}
+		}
+		@keyframes rotateCircle-delay{
+			from{
+				background-color: transparent;
+			}
+			49%{
+				background-color: transparent;
+			}
+			50%{
+				background-color: red;
+			}
+			to{
+				background-color: red;
+			}
+		}
+		.left div:after{
+			position: absolute;
+			content: '';
+			bottom: 0;
+			left: 50%;
+			width: 8px;
+			height: 10px;
+			background-color: red;
+			border-radius: 0 100% 100% 0/0 50% 50% 0;
+			animation: rotateCircle-delay 15s steps(2) infinite;
+		}
+		.right{
+			position: absolute;
+			clip: rect(0 auto auto 101px);
+			top: 0;
+			right: 0;
+			border-radius: 50%;
+			overflow: hidden;
+			border: 1px dashed blue;
+		}
+		.right div{
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg,transparent 50%,red 0);
+			animation: rotate 15s linear infinite;
+			transform: rotate(0.5turn);
+			position: relative;
+		}
+		@keyframes rotate{
+			from{
+				transform:rotate(0turn);
+			}
+			50%{
+				transform:rotate(0.5turn);
+			}
+			to{
+				transform:rotate(0.5turn);
+			}
+		}
+		.right div:after{
+			position: absolute;
+			content: '';
+			top: 0;
+			right: 50%;
+			width: 8px;
+			height: 10px;
+			background-color: red;
+			border-radius: 100% 0 0 100%/50% 0 0 50%;
+			animation:rotateCircle 15s steps(2) infinite;
+		}
+		@keyframes rotateCircle{
+			from{
+				background-color: red;
+			}
+			49%{
+				background-color: red;
+			}
+			50%{
+				background-color: transparent;
+			}
+			to{
+				background-color: transparent;
+			}
+		}
+		.cirle .center{
+			position: absolute;
+			width: 180px;
+			height: 180px;
+			top: 50%;
+			left: 50%;
+			background-color:white;
+			border-radius: 50%;
+			transform:translate(-50%,-50%);
+			line-height: 190px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="cirle">
+		<div class="left">
+			<div></div>
+		</div>
+		<div class="right">
+			<div></div>
+		</div>
+		<div class="center">
+			20
+		</div>
+	</div>
+</body>
+</html>
